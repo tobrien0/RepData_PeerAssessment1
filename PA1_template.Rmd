@@ -66,7 +66,7 @@ plot(
 )
 ```
 
-```{r, echo=FALSE}
+```{r, results="hide", echo=FALSE}
 # create the plot file in the figure subdirectory
 # there's probably a better way to do this but I ran out of time.
 png(filename="./figure/plot1.png", width=480, height=480)
@@ -114,7 +114,7 @@ plot(
 )
 ```
 
-```{r, echo=FALSE}
+```, include=FALSE, include=FALSE}}
 # create the plot file in the figure subdirectory
 png(filename="./figure/plot2.png", width=480, height=480)
 plot(
@@ -189,7 +189,7 @@ mu_dif <- paste(round(100*(mu2 - mu)/ mu2, 2), "%", sep="")
 mede_dif <- paste(round(100*(mede2 - mede)/ mede2, 2), "%", sep="")
 ```
 
-```{r, echo=FALSE}
+```{r, results="hide", echo=FALSE}
 # create the plot file in the figure subdirectory
 png(filename="./figure/plot3.png", width=480, height=480)
 plot(
@@ -221,7 +221,7 @@ daytype <- function(date) {
 }
 
 # create a new column using the 'daytype' function
-df$daytype <- as.factor(sapply(df$date, daytype))
+df2$daytype <- as.factor(sapply(df2$date, daytype))
 ```
 
 2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data. 
@@ -240,7 +240,7 @@ for (set in c("Weekend","Weekday")) {
                 sep=""
            )
     
-    plotset <- aggregate(steps ~ interval, data=df, subset=df$daytype==set, FUN=mean)
+    plotset <- aggregate(steps ~ interval, data=df2, subset=df2$daytype==set, FUN=mean)
     plot(
         plotset, 
         type = "l", 
@@ -250,9 +250,10 @@ for (set in c("Weekend","Weekday")) {
         ylab="Steps"
      )
 }
+
 ```
 
-```{r, echo=FALSE}
+```{r, results="hide", echo=FALSE}
 # create the plot file in the figure subdirectory
 png(filename="./figure/plot4.png", width=480, height=480)
 plot(
